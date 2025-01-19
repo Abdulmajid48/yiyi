@@ -7,7 +7,6 @@ export default function HomeScreen() {
   return (
   <View>
     <Text>wvsfbmvf.b.b .,bgbbgg, ,bbg,gnm,df</Text>
-    <Text>wvsfbmvf.b.b .,bgbbgg, ,bbg,gnm,df</Text>
     <Button title='ghdfnsfknfvkl' color={"red"}/>
   </View>
   );
