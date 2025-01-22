@@ -4,7 +4,14 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "ibm-regular": ["IBMPlexSans_400Regular"],
+        "ibm-medium": ["IBMPlexSans_500Medium"],
+        "ibm-semibold": ["IBMPlexSans_600SemiBold"],
+        "ibm-bold": ["IBMPlexSans_700Bold"],
+      },
+    },
   },
   plugins: [],
 };
