@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { type FC, useState } from "react";
 import { View, TextInput, TextInputProps } from "react-native";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -10,14 +10,14 @@ interface NameInputComponentProps extends TextInputProps {
   onValueChange: (value: string) => void;
 }
 
-const NameInputComponent: React.FC<NameInputComponentProps> = ({
+const NameInputComponent: FC<NameInputComponentProps> = ({
   inputType,
   placeholder,
   onValueChange,
   ...rest
 }) => {
   const [value, setValue] = useState("");
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   const renderIcon = () => {
     const iconProps = {
@@ -42,12 +42,13 @@ const NameInputComponent: React.FC<NameInputComponentProps> = ({
     return inputType === "password" ? (
       <TouchableOpacity
         onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-        className=""
+        
       >
         <Ionicons
           name={isPasswordVisible ? "eye-off" : "eye"}
           size={20}
           color="#87898E"
+         
         />
       </TouchableOpacity>
     ) : null;
@@ -61,9 +62,11 @@ const NameInputComponent: React.FC<NameInputComponentProps> = ({
           borderColor: "#DADADA",
           backgroundColor: "#FFFFFF",
           borderRadius: 12,
+          paddingLeft:10,
+          width: "100%",
         },
       ]}
-      className="w-11/12 h-14 px-3 flex flex-row items-center rounded-xl"
+      className="relative w-11/12 mx-auto h-14 px-3 flex flex-row items-center rounded-xl"
     >
       {renderIcon()}
       <TextInput
@@ -72,8 +75,9 @@ const NameInputComponent: React.FC<NameInputComponentProps> = ({
         secureTextEntry={inputType === "password" && !isPasswordVisible}
         placeholder={placeholder}
         placeholderTextColor="#87898E"
-        className="w-full pl-12 pr-12 text-[#87898E]"
+        className="pl-12 pr-12 text-[#87898E]"
         {...rest}
+        style={{width:"85%"}}
       />
       {renderPasswordToggle()}
     </View>

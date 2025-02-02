@@ -1,6 +1,5 @@
 import { useRouter } from "expo-router";
-import { View, Text, Button, Image, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, Image, Pressable } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function HomeScreen() {

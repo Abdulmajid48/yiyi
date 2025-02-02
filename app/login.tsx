@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, TouchableOpacity, Text, Alert } from "react-native";
 import NameInputComponent from "@/components/name";
-
+import { Image } from "react-native";
 const LoginScreen: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,7 +20,7 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <View className="w-11/12 mx-auto flex flex-col gap-5 bg-[#F5F5F5] p-4">
+    <View className="w-full mx-auto my-auto flex flex-col gap-5 bg-[#F5F5F5] p-4 ">
       <NameInputComponent
         inputType="name"
         placeholder="First Name"
@@ -30,17 +30,29 @@ const LoginScreen: React.FC = () => {
       />
       <NameInputComponent
         inputType="password"
-        placeholder="Password"
+        placeholder="Enter your password"
         onValueChange={(value) =>
           setFormData((prev) => ({ ...prev, password: value }))
         }
       />
+      <View className="flex justify-between items-center">
+        <Text></Text>
+        <Text></Text>
+      </View>
       <TouchableOpacity
         onPress={handleLogin}
-        className="bg-blue-500 p-3 rounded-xl items-center"
+        className="bg-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
       >
-        <Text className="text-white font-bold">Login</Text>
+        <Text className="text-white font-bold">Sign In</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleLogin}
+        className=" border border-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
+      >
+        <Text className="text-[#100D40] font-bold">Sign Up</Text>
+      </TouchableOpacity>
+      <Image source={require("../assets/images/facial.png")}
+      className="flex justify-center items-center mx-auto"></Image>
     </View>
   );
 };
