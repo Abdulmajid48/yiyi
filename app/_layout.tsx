@@ -60,6 +60,20 @@ export default function RootLayout() {
             title: "Login",
           }}
         />
+        <Stack.Screen
+          name="signin"
+          options={{
+            headerShown: true,
+            title: "Signin",
+          }}
+        />
+        <Stack.Screen
+          name="signup"
+          options={{
+            headerShown: false,
+            title: "Signup",
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

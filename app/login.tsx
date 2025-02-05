@@ -1,8 +1,11 @@
 import React, { type FC, useState } from "react";
-import { View, TouchableOpacity, Text, Alert, Pressable } from "react-native";
+import { View, Text, Alert, Pressable } from "react-native";
 import NameInputComponent from "@/components/nameinputcomponent";
 import { Image } from "react-native";
+import { useRouter } from "expo-router";
 const LoginScreen: FC = () => {
+
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     password: "",
@@ -21,8 +24,13 @@ const LoginScreen: FC = () => {
     // Implement login logic
     console.log("Login attempt", { formData });
     Alert.alert("Success", `Welcome, ${formData.name}!`);
+    router.push("/signin");
   };
 
+
+  const handleSignup = () => {
+    router.push("/signup");
+  };
   return (
     <View className="w-full mx-auto my-auto flex flex-col gap-9 bg-[#F5F5F5] p-4 ">
       <View className="flex flex-col gap-4">
@@ -51,19 +59,19 @@ const LoginScreen: FC = () => {
       </View>
       <View className="flex flex-col gap-4">
         {/* Sign In */}
-        <TouchableOpacity
+        <Pressable
           onPress={handleLogin}
           className="bg-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
         >
           <Text className="text-white font-bold">Sign In</Text>
-        </TouchableOpacity>
+        </Pressable>
         {/* Sign Up */}
-        <TouchableOpacity
-          onPress={handleLogin}
+        <Pressable
+          onPress={handleSignup}
           className=" border border-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
         >
           <Text className="text-[#100D40] font-bold">Sign Up</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
 
       <Image source={require("../assets/images/facial.png")}
