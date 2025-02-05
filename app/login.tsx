@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { View, TouchableOpacity, Text, Alert } from "react-native";
-import NameInputComponent from "@/components/name";
+import React, { type FC, useState } from "react";
+import { View, TouchableOpacity, Text, Alert, Pressable } from "react-native";
+import NameInputComponent from "@/components/nameinputcomponent";
 import { Image } from "react-native";
-const LoginScreen: React.FC = () => {
+const LoginScreen: FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     password: "",
   });
 
+  const [isChecked, setChecked] = useState<boolean>(false)
+  const RememberMe = () => {
+    return setChecked((prev) => (!prev))
+  }
   const handleLogin = () => {
     if (!formData.name || !formData.password) {
       Alert.alert("Error", "Please enter both username and password.");
@@ -20,39 +24,50 @@ const LoginScreen: React.FC = () => {
   };
 
   return (
-    <View className="w-full mx-auto my-auto flex flex-col gap-5 bg-[#F5F5F5] p-4 ">
-      <NameInputComponent
-        inputType="name"
-        placeholder="First Name"
-        onValueChange={(value) =>
-          setFormData((prev) => ({ ...prev, name: value }))
-        }
-      />
-      <NameInputComponent
-        inputType="password"
-        placeholder="Enter your password"
-        onValueChange={(value) =>
-          setFormData((prev) => ({ ...prev, password: value }))
-        }
-      />
-      <View className="flex justify-between items-center">
-        <Text></Text>
-        <Text></Text>
+    <View className="w-full mx-auto my-auto flex flex-col gap-9 bg-[#F5F5F5] p-4 ">
+      <View className="flex flex-col gap-4">
+        <NameInputComponent
+          inputType="name"
+          placeholder="First Name"
+          onValueChange={(value) =>
+            setFormData((prev) => ({ ...prev, name: value }))
+          }
+        />
+        <NameInputComponent
+          inputType="password"
+          placeholder="Enter your password"
+          onValueChange={(value) =>
+            setFormData((prev) => ({ ...prev, password: value }))
+          }
+        />
       </View>
-      <TouchableOpacity
-        onPress={handleLogin}
-        className="bg-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
-      >
-        <Text className="text-white font-bold">Sign In</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={handleLogin}
-        className=" border border-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
-      >
-        <Text className="text-[#100D40] font-bold">Sign Up</Text>
-      </TouchableOpacity>
+      {/* Remember me and forget password */}
+      <View className="flex flex-row justify-between items-center">
+        <View className="ml-3 flex flex-row justify-between items-center gap-2">
+          <Pressable onPress={RememberMe} className={` ${isChecked ? "bg-[#100D40]" : ""} w-5 h-5 rounded-md border-[#87898E] border hover:cursor-pointer`}></Pressable>
+          <Text className="text-[#87898E]">Remember me</Text>
+        </View>
+        <Text className="text-[#100D40]">Forget your password?</Text>
+      </View>
+      <View className="flex flex-col gap-4">
+        {/* Sign In */}
+        <TouchableOpacity
+          onPress={handleLogin}
+          className="bg-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
+        >
+          <Text className="text-white font-bold">Sign In</Text>
+        </TouchableOpacity>
+        {/* Sign Up */}
+        <TouchableOpacity
+          onPress={handleLogin}
+          className=" border border-[#100D40] p-3 h-14 flex justify-center rounded-3xl items-center"
+        >
+          <Text className="text-[#100D40] font-bold">Sign Up</Text>
+        </TouchableOpacity>
+      </View>
+
       <Image source={require("../assets/images/facial.png")}
-      className="flex justify-center items-center mx-auto"></Image>
+        className="flex justify-center items-center mx-auto"></Image>
     </View>
   );
 };

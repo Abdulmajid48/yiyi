@@ -42,13 +42,11 @@ const NameInputComponent: FC<NameInputComponentProps> = ({
     return inputType === "password" ? (
       <TouchableOpacity
         onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-        
       >
         <Ionicons
           name={isPasswordVisible ? "eye-off" : "eye"}
           size={20}
           color="#87898E"
-         
         />
       </TouchableOpacity>
     ) : null;
@@ -62,7 +60,7 @@ const NameInputComponent: FC<NameInputComponentProps> = ({
           borderColor: "#DADADA",
           backgroundColor: "#FFFFFF",
           borderRadius: 12,
-          paddingLeft:10,
+          paddingLeft: 10,
           width: "100%",
         },
       ]}
@@ -77,7 +75,7 @@ const NameInputComponent: FC<NameInputComponentProps> = ({
         placeholderTextColor="#87898E"
         className="pl-12 pr-12 text-[#87898E]"
         {...rest}
-        style={{width:"85%"}}
+        style={{ width: "85%" }}
       />
       {renderPasswordToggle()}
     </View>
