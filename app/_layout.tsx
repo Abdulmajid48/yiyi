@@ -70,8 +70,15 @@ export default function RootLayout() {
         <Stack.Screen
           name="signup"
           options={{
-            headerShown: false,
+            headerShown: true,
             title: "Signup",
+          }}
+        />
+        <Stack.Screen
+          name="otp"
+          options={{
+            headerShown: true,
+            title: "Otp",
           }}
         />
         <Stack.Screen name="+not-found" />
