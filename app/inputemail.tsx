@@ -1,9 +1,15 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Fontisto from '@expo/vector-icons/Fontisto'
+import { useRouter } from 'expo-router';
 import { View, Text, Image, TextInput, Pressable } from 'react-native'
 const inputemail = () => {
+
+  const router = useRouter();
+      const Congrat = () => {
+          return router.push("/congrat")
+      };
   return (
-    <View className='flex flex-col gap-4 mt-32 mx-auto w-11/12'>
+    <View className='flex flex-col gap-4 mt-32 mx-auto w-11/12 bg-[#F5F5F5]'>
       <Text className='text-[#100D40] text-4xl font-bold'>Sign Up</Text>
       <Image source={require("../assets/images/dot.png")} />
       <Text className='text-lg'> We need an email for notifications and a password for login purpose.</Text>
@@ -28,14 +34,13 @@ const inputemail = () => {
         </View>
         {/* Button */}
         <View className='flex flex-row justify-end items-end mt-6'>
-          <Pressable  className='flex flex-row gap-4 justify-center items-center bg-[#100D40] h-20 w-40 rounded-2xl'>
+          <Pressable onPress={Congrat}  className='flex flex-row gap-4 justify-center items-center bg-[#100D40] h-20 w-40 rounded-2xl'>
             <Text className='text-[#F8FCFC] text-xl'>Continue</Text>
             <AntDesign name="arrowright" size={30} color="white" />
           </Pressable>
-
         </View>
       </View>
     </View>
   )
 }
-export default inputemail
+export default inputemail;
