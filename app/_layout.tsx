@@ -63,22 +63,43 @@ export default function RootLayout() {
         <Stack.Screen
           name="signin"
           options={{
-            headerShown: true,
+            headerShown: false,
             title: "Signin",
           }}
         />
         <Stack.Screen
           name="signup"
           options={{
-            headerShown: true,
+            headerShown: false,
             title: "Signup",
           }}
         />
         <Stack.Screen
           name="otp"
           options={{
-            headerShown: true,
+            headerShown: false,
             title: "Otp",
+          }}
+        />
+        <Stack.Screen
+          name="inputname"
+          options={{
+            headerShown: false,
+            title: "InputName",
+          }}
+        />
+        <Stack.Screen
+          name="inputemail"
+          options={{
+            headerShown: false,
+            title: "InputEmail",
+          }}
+        />
+        <Stack.Screen
+          name="congrat"
+          options={{
+            headerShown: false,
+            title: "congrat",
           }}
         />
         <Stack.Screen name="+not-found" />

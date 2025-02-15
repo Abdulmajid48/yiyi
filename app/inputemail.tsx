@@ -1,13 +1,19 @@
 import AntDesign from '@expo/vector-icons/AntDesign'
 import Fontisto from '@expo/vector-icons/Fontisto'
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { View, Text, Image, TextInput, Pressable } from 'react-native'
 const inputemail = () => {
 
   const router = useRouter();
-      const Congrat = () => {
-          return router.push("/congrat")
-      };
+  const Congrat = () => {
+    return router.push("/congrat")
+  };
+
+  const [isChecked, setChecked] = useState<boolean>(false)
+  const Check = () => {
+    return setChecked((prev) => (!prev))
+  }
   return (
     <View className='flex flex-col gap-4 mt-32 mx-auto w-11/12 bg-[#F5F5F5]'>
       <Text className='text-[#100D40] text-4xl font-bold'>Sign Up</Text>
@@ -27,14 +33,14 @@ const inputemail = () => {
           <TextInput placeholder='Enter password' className='border-2 border-[#100D40] rounded-xl pl-2 bg-white h-14'></TextInput>
         </View>
         <View className='flex flex-row items-center gap-2'>
-          <Fontisto name="checkbox-passive" size={20} color="#100D40" />
+          <Pressable onPress={Check} className={` ${isChecked ? "bg-[#100D40]" : ""} w-5 h-5 rounded-md border-[#87898E] border hover:cursor-pointer`}></Pressable>
           <Text className=''>
             I agree to the <Text className='text-[#100D40] font-bold'>Terms of service</Text> and <Text className='text-[#100D40] font-bold'>Privacy Policy</Text>
           </Text>
         </View>
         {/* Button */}
         <View className='flex flex-row justify-end items-end mt-6'>
-          <Pressable onPress={Congrat}  className='flex flex-row gap-4 justify-center items-center bg-[#100D40] h-20 w-40 rounded-2xl'>
+          <Pressable onPress={Congrat} className='flex flex-row gap-4 justify-center items-center bg-[#100D40] h-20 w-40 rounded-2xl'>
             <Text className='text-[#F8FCFC] text-xl'>Continue</Text>
             <AntDesign name="arrowright" size={30} color="white" />
           </Pressable>
